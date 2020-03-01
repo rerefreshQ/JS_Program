@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CSS3全屏背景图片缩小渐变自动切换代码</title>
+<style type="text/css">
+
+	.addDiv{
+		height:100px;
+		width:100px;
+		background:red;
+	}
+
+
+</style>
+<script>
+window.onload=function()
+{
+	var oBtn=document.getElementById('btn1');
+	var oUl=document.getElementById('ul1');
+	var fDiv=document.getElementById('f');
+	
+	//oBtn.onclick=function()
+	for(var i = 0;i<=0;i++)
+	{
+		//var oLi=document.createElement('li');
+		//oUl.appendChild(oLi);
+		alert(i);
+		var cDiv=document.createElement('div');
+		fDiv.appendChild(cDiv)
+		cDiv.className='addDiv'
+	}
+	
+	
+	
+
+	
+}
+
+</script>
+
+</head>
+<body>
+<input id="btn1" type="button" value="创建li"/>
+
+<ul id="ul1">
+</ul>
+
+
+<div id="f" style="height:500px;width:500px;background:yellow;">
+
+</div>
+
+</body>
+</html>
