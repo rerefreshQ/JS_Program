@@ -1,541 +1,124 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="zh-cn">
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>给桉桉的计算题目</title>
-<link href="calculationCSS.css" rel="stylesheet" type="text/css" />
-
-
-<script>
-
-</script>
-
-
-
-<script>
-
-	var arrayResult
-	var checkboxOnlyOne
-	
-	var textNumber
-	var textResult
-	
-	var labLeft
-	var labRight
-	var labResult
-	
-	
-	var arrInputerNumber
-	var arrDIV
-	
-	var labelResult
-	var labelMessage
-	
-	var btnC
-	
-	var btnOK
-	var btnNew
-	
-	
-	var imgPicture
-	
-	window.onload=function()
-	{
-		arrayResult
-		checkboxOnlyOne = document.getElementById("checkboxOnlyOne")
-	
-		textNumber = document.getElementById("textNumber")
-		textResult = document.getElementById("textResult")
-	
-		labLeft = document.getElementById("labLeft")
-		labRight = document.getElementById("labRight")
-		labResult = document.getElementById("labResult")
-	
-	
-		arrInputerNumber = document.getElementsByTagName("input");
-		arrDIV = document.getElementsByTagName("div");
-	
-		labelResult=document.getElementById("labResult");
-		labelMessage = document.getElementById("labelTest");
-	
-		btnC=document.getElementById("buttonC");
-	
-		btnOK=document.getElementById("buttonOK")
-		btnNew=document.getElementById("buttonNew");
-	
-	
-		imgPicture=document.getElementById("imgPicture")
-	
-		var arr09=[];
-		for(var i=0;i<10;i++)
-		{
-			arr09.push(i.toString())
-		}
-	
-	
-
-	
-	
-		textNumber.onkeydown==textResult.onkeydown==function(event)
-		{
-			console.log(event.keyCode)
-			//退格:8
-			//del:46
-			//F5:116 
-			//左:37
-			//右:39
-			//Enter:13
-			//Tab:9
-			//小键盘 0-9: 96-105
-			//小键盘 0-9: 48-57
-
-
-			if(event.keyCode==46 || 
-			event.keyCode==8 ||
-			event.keyCode==116 || 
-			event.keyCode==37 || 
-			event.keyCode==39 || 
-			event.keyCode==13 || 
-			event.keyCode==9 || 
-			(event.keyCode>=96 && event.keyCode<=105) ||
-			(event.keyCode>=48 && event.keyCode<=57))
-			//if((event.keyCode>=96 && event.keyCode<=105) || event.keyCode==46)
-			{
-
-			}
-			else
-			{
-				return false;
-			}
-		}
-	
-	
-		
-		function getNewAdd()
-		{
-			var arrayABC=[]
-			var temp;
-			var A,B,C
-			
-			if(checkboxOnlyOne.checked)
-			{
-				B=parseInt(textNumber.value)
-			}
-			else
-			{
-				B=getRandomNumber(0,parseInt(textNumber.value))
-			}
-			C = getRandomNumber(B,parseInt(textResult.value))
-			A = C-B
-			
-			//console.log("第一次A,B,C=",A,B,C)
-			
-			if(getRandomNumber(0,1))
-			{
-				temp = A
-				A = B
-				B = temp
-			}
-			arrayABC=[A,B,C]
-			
-			//console.log("ArrayABC=",arrayABC)
-			return arrayABC
-		}
-		
-		
-
-		
-		function getRandomNumber(M,N)
-		{
-			//console.log(M,N)
-			//(2,6)   (6-2+1)=5 
-			/*
-			r=Math.random()
-			retunrnValue=parseInt((r*(N-M+1)))
-			console.log("r=",r,"retunrnValue=",retunrnValue)
-			return retunrnValue+M
-			*/
-			
-			return parseInt(Math.random()*(N-M+1))+M
-			
-		}
-	
-	
-		
-	
-	
-		function clickNumber_del(Num)
-		{
-	/*		if(arr09.indexOf(this.value)>=0)   // 如果是 0-9 键
-			{
-				labelResult.innerHTML=labelResult.innerHTML+this.value
-			}*/
-			
-			labelResult.innerHTML=labelResult.innerHTML+Num
-		}
-	
-	/*	for(var i in arrInputerNumber)
-		{
-			arrInputerNumber[i].onclick=clickNumber
-		}*/
-	
-	
-		btnC.onclick=function()
-		{
-			labelResult.innerHTML=''
-			imgPicture.src="images/透明.gif"
-		}
-		
-		btnNew.onclick=function()
-		{
-			arrayResult = getNewAdd();
-			labLeft.innerHTML=arrayResult[0].toString()    //+"&emsp;"
-			labRight.innerHTML=arrayResult[1].toString()    //+"&emsp;"
-			console.log(arrayResult)
-			btnNew.style.visibility="hidden"
-	
-			btnC.onclick()
-		}
-		
-	
-		btnOK.onclick=function()
-		{
-	
-			if(arrayResult[2].toString()==labelResult.innerHTML)
-			{
-				//发出good的图片
-				btnNew.style.visibility="visible"  //显示
-				//<img id="imgPicture" src="images/good/眼睛闪光好棒.gif" />
-				imgPicture.src="images/good/黄色大手掌鼓掌.gif"
-			}
-			else
-			{
-				//发出 error 的图片
-				btnNew.style.visibility="hidden"   //隐藏
-				imgPicture.src="images/error/黄No.gif"
-			}
-		};
-		
-		
-	
-		
-		
-		
-		
-		//textResult.        textNumber.
-	
-		textNumber.value=getNumberAndResult('cookieNumber')
-		textResult.value=getNumberAndResult('cookieResult')
-		checkboxOnlyOne.checked=checkboxOnlyOneCheck()
-		//checkboxOnlyOne.checked=1
-
-		
-		
-		function checkboxOnlyOneCheck()
-		{
-			var returnValue=0
-			temp=getCookie("cookieCheckboxCal")
-			switch(temp)
-			{
-				case "":
-					returnValue=0;
-					break;
-				case "1":
-					returnValue=1
-					break;
-				case "0":
-					returnValue=0
-					break;
-				
-			}
-				
-			
-			return returnValue;
-			
-		}
-		
-		btnNew.onclick();
-		
-/*		function getCookCheckboxOnlyOne()
-		{
-			var returnValue
-			if(getCookie("CheckboxOnlyOne")=="")
-			{
-				 returnValue="false"
-			}
-			return returnValue
-		}
-*/		
-
-
-
-
-		function getNumberAndResult(smallOrResult)
-		{
-			var returnValue;  // 这里
-			console.log('getNumberAndResult(' + smallOrResult + ")")
-			switch(smallOrResult)
-			{
-				case 'cookieNumber':
-					returnValue = getCookie('cookieNumber')
-					//if(returnValue=="" || (typeof returnValue == "undefined"))
-					if(returnValue=="")
-					{
-						returnValue=5
-					}
-					console.log(returnValue.toString())
-					break;
-					
-				case 'cookieResult':
-					returnValue = getCookie('cookieResult')
-					if(returnValue=="")
-					{
-						returnValue=20
-					}
-					console.log(returnValue.toString())
-					break;
-			};
-			return returnValue;
-		}
-		
-		// window.onload 完结 ------------------------------------------------------------------------------------------------------
-
-	}
-
-
-	function textOnKey()
-	{
-		this.value=this.value.replace(/[^\d]/g,'')
-	}
-
-
-
-	function clickNumber(Num)
-	{
-		labelResult.innerHTML=labelResult.innerHTML+Num
-	}
-
-	function clickCheckboxCal()
-	{
-/*		if(checkboxOnlyOne.checked)
-		{
-			setCookie('cookieCheckboxCal',"T",240)
-		}
-		else
-		{
-			setCookie('cookieCheckboxCal',"F",240)
-		}*/
-		if(checkboxOnlyOne.checked==true)
-		{
-			cookieValue=1
-		}
-		else
-		{
-			cookieValue=0
-		}
-		setCookie('cookieCheckboxCal',cookieValue,240)
-	}
-
-	function setTextBlur(smallOrResult)
-	{
-		//'cookieNumber'    'cookieResult'    textResult.        textNumber.
-		//console.log(smallOrResult)
-		
-		switch(smallOrResult)
-		{
-			case "cookieResult":
-				setCookie('cookieResult',textResult.value,240)
-				console.log("cookieResultValue = " + smallOrResult + " = " + textResult.value)
-				break;
-				
-			case "cookieNumber":
-				setCookie('cookieNumber',textNumber.value,240)
-				console.log("cookieNumberValue = " + smallOrResult + " = " + textNumber.value)
-				break;
-				
-			default:
-				console.log('setTextBlur defult')
-				break;
-		
-		}
-		
-		
-	}
-
-
-
-
-	function setCookie(name,value,hours){  
-		var d = new Date();
-		d.setTime(d.getTime() + hours * 3600 * 1000);
-		document.cookie = name + '=' + value + '; expires=' + d.toGMTString();
-	}
-	function getCookie(name){  
-		var arr = document.cookie.split('; ');
-		for(var i = 0; i < arr.length; i++){
-			var temp = arr[i].split('=');
-			if(temp[0] == name){
-				return temp[1];
-			}
-		}
-		return '';
-	}
-	function removeCookie(name){
-		var d = new Date();
-		d.setTime(d.getTime() - 10000);
-		document.cookie = name + '=1; expires=' + d.toGMTString();
-	}
-
-</script>
-
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="S.ico" />
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/calculction.css">
+    <title>给桉桉的计算题+-法</title>
 </head>
 
 <body>
+    <!-- 各种设定 start -->
+    <header class="w">
+        <ul>
+            <li class="liTextAndButton">
+                <input id="textStart" type="text" name="textStart" id="" value="0">
+                <section class="sectionTextAndButton">
+                    <div class="btnAdd" id="textStartAdd"></div>
+                    <div class="btnCut" id="textStartCut"></div>
+                </section>
+
+            </li>
+
+            <li>
+                <span>至</span>
+            </li>
 
 
-<div id="divSetting" align="center">
-    <b>
-    <label>
-        <input id="checkboxOnlyOne"  class="checkbox" type="checkbox" value=""    onchange="clickCheckboxCal()"/>
-        重点计算
-    </label>
-    <br />
-    
-    <label>数字+
-    
-    <select  hidden="true">
-      <option value="select5">5</option>
-      <option value="select4">4</option>
-      <option value="select3">3</option>
-      <option value="select2">2</option>
-      <option value="select1">1</option>
-    </select>
-    
-    
-    
-    
-    <input id="textNumber" type="text" onkeyup="setTextBlur('cookieNumber')" >以内
+            <li class="liTextAndButton">
+                <input id="textEnd" type="text" name="textEnd" id="" value="50">
+                <section class="sectionTextAndButton">
+                    <div class="btnAdd" id="textStartAdd"></div>
+                    <div class="btnCut" id="textStartCut"></div>
+                </section>
+            </li>
 
-    
-    =
-    <select hidden="true">
-      <option value="select30">30</option>
-      <option value="select20" selected="selected">20</option>
-      <option value="select10">10</option>
-    </select>
-    </label>
+            <li>
+                <div>
+                    <span>之间</span>
+                </div>
+            </li>
 
-    <input id="textResult" type="text" onkeyup="setTextBlur('cookieResult')" >
-   
-    <br />
-    
-    
-    
-        <label style="display:none" >
-            <input id="add"  class="checkbox" type="checkbox" value=""  checked="checked"/>
-            加法&emsp;
-        </label>
-    
-        
-        <label style="display:none">
-            <input id="cut" class="checkbox" type="checkbox" value=""  />
-            减法
-        </label>
+            <li>
+                <section class="AddCut">
+                    <div>
+                        <input id="cbxAdd" type="checkbox" name=""><label for="cbxAdd">加法</label>
+                    </div>
 
-    </b>
-</div>
+                    <div>
+                        <input id="cbxCut" type="checkbox" name=""><label for="cbxCut">减法</label>
+                    </div>
+                </section>
+            </li>
+
+            <li>
+                <div>
+                    <span>计算题</span>
+                </div>
+            </li>
+        </ul>
+    </header>
+    <!-- 各种设定 over -->
 
 
+    <!-- 计算式 start -->
+    <div class="question w">
+        <ul>
+            <li id="rand1">5</li>
+            <li id="AddOrCut">+</li>
+            <li id="rand2">5</li>
+            <li>=</li>
+            <li id="cal">10</li>
+        </ul>
+    </div>
+    <!-- 计算式 end -->
 
 
-<div id="divCalculation"  align="center"  >
-	<b>
+    <div class="input w clearfix">
+        <section class="number">
+            <ul>
+                <li id="id1">1</li>
+                <li id="id2">2</li>
+                <li id="id3">3</li>
+                <li id="id4">4</li>
+                <li id="id5">5</li>
+                <li id="id6">6</li>
+                <li id="id7">7</li>
+                <li id="id8">8</li>
+                <li id="id9">9</li>
+                <li id="id0">0</li>
+                <li id="idC">C</li>
+                <li id="idOK">OK</li>
+            </ul>
+        </section>
 
 
-    <table width="750px" border="0" >
-        <tr>
-            <td colspan=2 align="center">
-                <label id="labLeft" style="font-size:66px" >&emsp;</label>
-                <label id="labSymbol" style="font-size:66px">+&emsp;</label>
-                <label id="labRight" style="font-size:66px">&emsp;</label>
-                <label id="labIs" style="font-size:66px">=&emsp;</label>
-                <label id="labResult" style="font-size:66px"></label>
-            </td>
-        </tr>
-    
-    
-        
-        <tr>
-            <td align="center">
-                <input id="button1" class="button" type="button" value="1" onclick="clickNumber('1')"/>
-                <input id="button2" class="button" type="button" value="2" onclick="clickNumber('2')"/>
-                <input id="button3" class="button" type="button" value="3" onclick="clickNumber('3')"/>
-                <br />
-            
-                <input id="button4" class="button" type="button" value="4" onclick="clickNumber('4')"/>
-                <input id="button5" class="button" type="button" value="5" onclick="clickNumber('5')"/>
-                <input id="button6" class="button" type="button" value="6" onclick="clickNumber('6')"/>
-                <br />
-            
-                <input id="button7" class="button" type="button" value="7" onclick="clickNumber('7')"/>
-                <input id="button8" class="button" type="button" value="8" onclick="clickNumber('8')"/>
-                <input id="button9" class="button" type="button" value="9" onclick="clickNumber('9')"/>
-                <br />
-            
-                <input id="button0" class="button" type="button" value="0" onclick="clickNumber('0')"/>
-                <input id="buttonC" class="button" type="button" value="C" />
-            
-            
-                
-                <br />
-                <br />
-                <input id="buttonOK" class="button" type="button" value="OK" />
-                <input id="buttonNew" class="button" type="button" value="下一题" />
-            </td>
-            
-        
-            <td>
-                <img id="imgPicture"  width="300px"  />    
-            </td>
-        </tr>
-    </table>
+        <section class="result">
+            <div class="ask">
+                <p>????</p>
+                <img src="images/小鸡疑问.jpeg" alt="">
+            </div>
+
+            <div class="right">
+                <p></p>
+                <img src="images/good/小黄龙手指头.gif" alt="">
+            </div>
+
+            <div class="error">
+                <p></p>
+                <img src="images/error/黄No.gif" alt="">
+            </div>
 
 
+        </section>
 
-
-
-        
-      
-
-        
-
-        	
-
-	</b>
-
-
-
-
-</div>
-
-
-
-<div id="divPicture"  >
-
-</div>
-
-
-
-<!--
-<div id="forTest" >
-	<label id="labelTest0" >message</label>
-	<label id="labelTest" >?</label>
-
-</div>
--->
+    </div>
 
 
 
 </body>
+
 </html>

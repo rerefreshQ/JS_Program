@@ -1,55 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<title>CSS3全屏背景图片缩小渐变自动切换代码</title>
-<style type="text/css">
-
-	.addDiv{
-		height:100px;
-		width:100px;
-		background:red;
-	}
-
-
-</style>
-<script>
-window.onload=function()
-{
-	var oBtn=document.getElementById('btn1');
-	var oUl=document.getElementById('ul1');
-	var fDiv=document.getElementById('f');
-	
-	//oBtn.onclick=function()
-	for(var i = 0;i<=0;i++)
-	{
-		//var oLi=document.createElement('li');
-		//oUl.appendChild(oLi);
-		alert(i);
-		var cDiv=document.createElement('div');
-		fDiv.appendChild(cDiv)
-		cDiv.className='addDiv'
-	}
-	
-	
-	
-
-	
-}
-
-</script>
-
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
 </head>
 <body>
-<input id="btn1" type="button" value="创建li"/>
+	<div id="j_formAdd" class="form-add">
+        <div class="form-add-title">
+            <span>添加数据</span>
 
-<ul id="ul1">
-</ul>
-
-
-<div id="f" style="height:500px;width:500px;background:yellow;">
-
-</div>
-
+            <div id="j_hideFormAdd">×</div>
+        </div>
+        <div class="form-item">
+            <label class="lb" for="j_txtLesson">课程名称：</label>
+            <input class="txt" type="text" id="j_txtLesson" placeholder="请输入课程名称">
+        </div>
+        <div class="form-item">
+            <label class="lb" for="j_txtBelSch">所属学院：</label>
+            <input class="txt" type="text" id="j_txtBelSch" value="传智播客-前端与移动开发学院">
+        </div>
+        <div class="form-submit">
+            <input type="button" value="添加" id="j_btnAdd">
+        </div>
+    </div>
 </body>
 </html>
