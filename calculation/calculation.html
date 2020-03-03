@@ -7,6 +7,8 @@
     <link rel="shortcut icon" href="S.ico" />
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/calculction.css">
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script src="js/calculction.js" defer></script>
     <title>给桉桉的计算题+-法</title>
 </head>
 
@@ -31,8 +33,8 @@
             <li class="liTextAndButton">
                 <input id="textEnd" type="text" name="textEnd" id="" value="50">
                 <section class="sectionTextAndButton">
-                    <div class="btnAdd" id="textStartAdd"></div>
-                    <div class="btnCut" id="textStartCut"></div>
+                    <div class="btnAdd" id="textEndAdd"></div>
+                    <div class="btnCut" id="textEndCut"></div>
                 </section>
             </li>
 
@@ -44,12 +46,18 @@
 
             <li>
                 <section class="AddCut">
-                    <div>
+                    <!-- <div>
                         <input id="cbxAdd" type="checkbox" name=""><label for="cbxAdd">加法</label>
                     </div>
 
                     <div>
                         <input id="cbxCut" type="checkbox" name=""><label for="cbxCut">减法</label>
+                    </div> -->
+
+                    <div>
+                        <input type="radio" name="radioCal" id="Add" value="Add"><label for="Add"> 加法 </label><br>
+                        <input type="radio" name="radioCal" id="Cut" value="Cut" checked><label for="Cut"> 减法 </label><br>
+                        <!-- <input type="radio" name="radioCal" id="AddAndCut" value="AddAndCut"><label for="AddAndCut"> 加法和减法 </label> -->
                     </div>
                 </section>
             </li>
@@ -92,6 +100,7 @@
                 <li id="id0">0</li>
                 <li id="idC">C</li>
                 <li id="idOK">OK</li>
+                <li id="nextAsk">下一题</li>
             </ul>
         </section>
 
@@ -109,7 +118,7 @@
 
             <div class="error">
                 <p></p>
-                <img src="images/error/黄No.gif" alt="">
+                <img src="images/error/猫No.gif" alt="">
             </div>
 
 

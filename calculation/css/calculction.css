@@ -64,13 +64,14 @@ header ul li .AddCut {
     zoom: 230%;
 }
 
-header ul li .AddCut div {
+
+/* header ul li .AddCut div {
     padding: 0 10px 10px 10px;
 }
 
 header ul li .AddCut input[type="checkbox"] {
     vertical-align: middle;
-}
+} */
 
 .question {
     /* border: 1px solid burlywood; */
@@ -115,8 +116,15 @@ header ul li .AddCut input[type="checkbox"] {
     color: rgb(255, 255, 255);
     background-color: rgb(76, 175, 80);
     margin: 22px;
-    border-radius: 50%;
+    border-radius: 45%;
     cursor: pointer;
+}
+
+#nextAsk {
+    width: 300px;
+    height: 80px;
+    float: right;
+    display: none;
 }
 
 
@@ -129,7 +137,9 @@ section.result {
     /* background-color: crimson; */
 }
 
-section.result div.ask,
+
+/* section.result div.ask, */
+
 section.result div.right,
 section.result div.error {
     display: none;
