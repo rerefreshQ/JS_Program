@@ -181,7 +181,10 @@
                         $('section.result div.ask').css("display", "none");
 
                         // $('#liNextAsk').css("display", "block");   // 打开下一题
+                        $('.input section.number ul li button').attr("disabled", true); //关闭所有
                         $('#nextAsk').attr("disabled", false); // 打开下一题
+
+                        // $('#idC').attr("disabled", true); // 关闭C
                     } else {
                         // 答案错误
                         $('section.result div.error').css("display", "block");
@@ -189,7 +192,6 @@
                     }
                     break;
                 case '下一题':
-
                     nextAsk();
                     break;
                 default:
@@ -225,7 +227,10 @@
             console.log(listNumber);
             $('section.result div.right').css("display", "none");
             $('section.result div.ask').css("display", "block");
-            // $('#liNextAsk').css("display", "none");   // 关闭下一题
+
+
+            $('.input section.number ul li button').attr("disabled", false); //打开所有
+            // $('#idC').attr("disabled", false) // 打开C
             $('#nextAsk').attr("disabled", true); // 关闭下一题
             $('#loading').css("display", "none");
         }

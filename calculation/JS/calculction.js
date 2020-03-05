@@ -29,7 +29,6 @@ $('.number>ul>li').click(function() {
             }
             break;
         case '下一题':
-
             nextAsk();
             break;
         default:
