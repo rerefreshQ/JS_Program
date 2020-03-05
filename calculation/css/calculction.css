@@ -7,6 +7,18 @@
     font-display: block;
 }
 
+#loading {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: slategrey;
+    color: snow;
+    font-size: 200px;
+    z-index: 10;
+    /* opacity: 0.3; */
+    /* display: none; */
+}
+
 
 /* 以下是开始的设定 */
 
@@ -106,13 +118,13 @@ header ul li .AddCut input[type="checkbox"] {
     /* background-color: chocolate; */
 }
 
-.input section.number ul li {
+.input section.number ul li button {
     float: left;
     width: 150px;
     height: 80px;
-    font-size: 35px;
-    text-align: center;
+    font-size: 30px;
     line-height: 80px;
+    text-align: center;
     color: rgb(255, 255, 255);
     background-color: rgb(76, 175, 80);
     margin: 22px;
@@ -120,11 +132,18 @@ header ul li .AddCut input[type="checkbox"] {
     cursor: pointer;
 }
 
-#nextAsk {
+.input section.number ul li button {
+    border: 0;
+}
+
+.input section.number ul #liNextAsk {
+    display: none;
+    float: right;
+}
+
+.input section.number ul #nextAsk {
     width: 300px;
     height: 80px;
-    float: right;
-    display: none;
 }
 
 

@@ -1,4 +1,5 @@
 @charset "utf-8";
+
 /* CSS Document */
 
 
@@ -8,35 +9,29 @@
 .xx{ font-size:9px}
 */
 
-
-input[type=text]{
-	font-size:36px;
-	width:45px;
+input[type=text] {
+    font-size: 36px;
+    width: 45px;
 }
 
-
-
-
-
-
-
-
-.sideBySide{
-	display:inline;
-	
+.sideBySide {
+    display: inline;
 }
 
 input[type=checkbox] {
-  -ms-transform: scale(3); /* IE */
-  -moz-transform: scale(3); /* FireFox */
-  -webkit-transform: scale(3); /* Safari and Chrome */
-  -o-transform: scale(3); /* Opera */
+    -ms-transform: scale(3);
+    /* IE */
+    -moz-transform: scale(3);
+    /* FireFox */
+    -webkit-transform: scale(3);
+    /* Safari and Chrome */
+    -o-transform: scale(3);
+    /* Opera */
 }
 
-select{
-	font-size:36px
+select {
+    font-size: 36px
 }
-
 
 .button {
     background-color: #4CAF50;
@@ -46,21 +41,14 @@ select{
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    /* font-size: 16px; */
     margin: 4px 2px;
     cursor: pointer;
-	font-size:36px;
-
-}
-	
-
-.labelTest{
+    font-size: 36px;
 }
 
+.labelTest {}
 
-
-	
-label{
-	font-size:36px;
-	
+label {
+    font-size: 36px;
 }

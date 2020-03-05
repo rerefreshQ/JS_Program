@@ -22,7 +22,7 @@ $('.number>ul>li').click(function() {
                 $('section.result div.right').css("display", "block");
                 $('section.result div.ask').css("display", "none");
 
-                $('#nextAsk').css("display", "block");
+                $('#liNextAsk').css("display", "block");
             } else {
                 // 答案错误
                 $('section.result div.error').css("display", "block");
@@ -30,7 +30,7 @@ $('.number>ul>li').click(function() {
             }
             break;
         case '下一题':
-            // $('#nextAsk').click();
+
             nextAsk();
             break;
         default:
@@ -77,7 +77,8 @@ function nextAsk() {
     console.log(listNumber);
     $('section.result div.right').css("display", "none");
     $('section.result div.ask').css("display", "block");
-    $('#nextAsk').css("display", "none");
+    $('#liNextAsk').css("display", "none");
+    $('#loading').css("display", "none");
 }
 
 // $('#nextAsk').click(function() {
