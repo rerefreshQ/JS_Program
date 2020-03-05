@@ -16,12 +16,17 @@ $('.number>ul>li').click(function() {
             break;
 
         case 'OK':
+
             if (parseInt($('#cal').text()) == listNumber[2]) {
                 // 答案正确
                 $('section.result div.right').css("display", "block");
                 $('section.result div.ask').css("display", "none");
 
-                $('#liNextAsk').css("display", "block");
+                // $('#liNextAsk').css("display", "block");   // 打开下一题
+                $('.input section.number ul li button').attr("disabled", true); //关闭所有
+                $('#nextAsk').attr("disabled", false); // 打开下一题
+
+                // $('#idC').attr("disabled", true); // 关闭C
             } else {
                 // 答案错误
                 $('section.result div.error').css("display", "block");
@@ -64,7 +69,11 @@ function nextAsk() {
     console.log(listNumber);
     $('section.result div.right').css("display", "none");
     $('section.result div.ask').css("display", "block");
-    $('#liNextAsk').css("display", "none");
+
+
+    $('.input section.number ul li button').attr("disabled", false); //打开所有
+    // $('#idC').attr("disabled", false) // 打开C
+    $('#nextAsk').attr("disabled", true); // 关闭下一题
     $('#loading').css("display", "none");
 }
 
@@ -104,23 +113,56 @@ function getRandList() {
 };
 
 
-$('#textStartAdd').mousedown(function() { UpDown($('#textStart'), 1); })
-$('#textStartAdd').mouseup(function() { clearInterval(time1); })
+// $('#textStartAdd').mousedown(function() {
+//     UpDownMore($('#textStart'), 1);
+// });
+// $('#textStartAdd').mouseup(function() {
+//     clearInterval(time1);
+// });
+// $('#textStartCut').mousedown(function() {
+//     UpDownMore($('#textStart'), -1);
+// })
+// $('#textStartCut').mouseup(function() {
+//     clearInterval(time1);
+// })
 
-$('#textStartCut').mousedown(function() { UpDown($('#textStart'), -1); })
-$('#textStartCut').mouseup(function() { clearInterval(time1); })
+// $('#textEndAdd').mousedown(function() {
+//     UpDownMore($('#textEnd'), 1);
+// })
+// $('#textEndAdd').mouseup(function() {
+//     clearInterval(time1);
+// })
 
-$('#textEndAdd').mousedown(function() { UpDown($('#textEnd'), 1); })
-$('#textEndAdd').mouseup(function() { clearInterval(time1); })
+// $('#textEndCut').mousedown(function() {
+//     UpDownMore($('#textEnd'), -1);
+// })
+// $('#textEndCut').mouseup(function() {
+//     clearInterval(time1);
+// })
 
-$('#textEndCut').mousedown(function() { UpDown($('#textEnd'), -1); })
-$('#textEndCut').mouseup(function() { clearInterval(time1); })
+$('#textStartAdd').click(function() {
+    UpDown($('#textStart'), 10);
+});
+
+$('#textStartCut').click(function() {
+    UpDown($('#textStart'), -10);
+})
+
+
+$('#textEndAdd').click(function() {
+    UpDown($('#textEnd'), 10);
+})
+
+$('#textEndCut').click(function() {
+    UpDown($('#textEnd'), -10);
+})
 
 
 
 
 
-function UpDown(textId, number) {
+
+function UpDownMore(textId, number) {
     time1 = setInterval(() => {
         if (parseInt(textId.val()) == 0 && number == -1) {
 
@@ -128,4 +170,17 @@ function UpDown(textId, number) {
             textId.val(parseInt(textId.val()) + number);
         }
     }, 50);
-}
+};
+
+
+function UpDown(textId, number) {
+    if (parseInt(textId.val()) == 0 && number < 0) {
+
+    } else {
+        if (parseInt(textId.val()) + number >= 100) {
+
+        } else {
+            textId.val(parseInt(textId.val()) + number);
+        }
+    }
+};
