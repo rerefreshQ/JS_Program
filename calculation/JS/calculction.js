@@ -1,5 +1,4 @@
 var tempResult;
-var inputNumber = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 var listNumber;
 
 $(function() {
@@ -41,17 +40,6 @@ $('.number>ul>li').click(function() {
             $('#cal').text(tempResult);
             break;
     }
-    // if (userClick == 'C') {
-    //     tempResult = '';
-    //     $('#cal').text(tempResult);
-    // }
-
-
-    // if (userClick == 'OK') {
-    //     console.log('ok');
-    // }
-
-
 });
 
 
@@ -80,36 +68,6 @@ function nextAsk() {
     $('#liNextAsk').css("display", "none");
     $('#loading').css("display", "none");
 }
-
-// $('#nextAsk').click(function() {
-//     listNumber = getRandList(); // 得到题目和答案 [A,+B,=result]
-
-//     var cal = $('input:radio[name=radioCal]:checked').val(); // 做加法还是减法的 redio
-//     if (cal == 'Add') {
-//         $('#rand1').text(listNumber[0]);
-//         $('#AddOrCut').text('+');
-//         $('#rand2').text(listNumber[1]);
-//         $('#cal').text('');
-//         tempResult = '';
-//     }
-//     if (cal == 'Cut') {
-//         listNumber = listNumber.reverse();
-//         $('#rand1').text(listNumber[0]);
-//         $('#AddOrCut').text('-');
-//         $('#rand2').text(listNumber[1]);
-//         $('#cal').text('');
-//         tempResult = '';
-//     }
-//     console.log(listNumber);
-
-
-//     console.log(
-//         // $('#rand1').text()
-//     );
-// });
-
-
-
 
 function getRandList() {
     // 得到 listRand[A, B, result] 3 个数的组合 list
