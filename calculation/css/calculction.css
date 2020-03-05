@@ -111,6 +111,14 @@ header ul li .AddCut input[type="checkbox"] {
 
 /* 以下是键盘 */
 
+button[disabled] {
+    color: white !important;
+    /* color: slategrey; */
+    /* background: #730000 !important; */
+    background-color: slategrey !important;
+    cursor: default !important;
+}
+
 .input section.number {
     float: left;
     width: 590px;
@@ -143,7 +151,7 @@ header ul li .AddCut input[type="checkbox"] {
 }
 
 .input section.number ul #liNextAsk {
-    display: none;
+    /* display: none; */
     float: right;
 }
 

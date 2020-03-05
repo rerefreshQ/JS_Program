@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/calculction.css">
     <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
     <!-- <script src="js/calculction.js" defer></script> -->
-    <title>:35 给桉桉的计算题+-法</title>
+    <title>给桉桉的计算题+-法</title>
 
 
 </head>
@@ -125,7 +125,7 @@
                 <li><button id="id0">0</button></li>
                 <li><button id="idC">C</button></li>
                 <li><button id="idOK">OK</button></li>
-                <li id="liNextAsk"><button id="nextAsk">下一题</button></li>
+                <li id="liNextAsk"><button id="nextAsk" disabled>下一题</button></li>
                 <!-- <li><button id="nextAsk"></button></li> -->
 
 
@@ -174,12 +174,14 @@
                     break;
 
                 case 'OK':
+
                     if (parseInt($('#cal').text()) == listNumber[2]) {
                         // 答案正确
                         $('section.result div.right').css("display", "block");
                         $('section.result div.ask').css("display", "none");
 
-                        $('#liNextAsk').css("display", "block");
+                        // $('#liNextAsk').css("display", "block");   // 打开下一题
+                        $('#nextAsk').attr("disabled", false); // 打开下一题
                     } else {
                         // 答案错误
                         $('section.result div.error').css("display", "block");
@@ -223,7 +225,8 @@
             console.log(listNumber);
             $('section.result div.right').css("display", "none");
             $('section.result div.ask').css("display", "block");
-            $('#liNextAsk').css("display", "none");
+            // $('#liNextAsk').css("display", "none");   // 关闭下一题
+            $('#nextAsk').attr("disabled", true); // 关闭下一题
             $('#loading').css("display", "none");
         }
 
