@@ -23,7 +23,7 @@
 /* 以下是开始的设定 */
 
 header.w {
-    margin-top: 50px;
+    /* margin-top: 5px; */
     height: 150px;
     /* border: 1px solid orange; */
 }
@@ -116,6 +116,12 @@ header ul li .AddCut input[type="checkbox"] {
     width: 590px;
     height: 500px;
     /* background-color: chocolate; */
+}
+
+.input section.number ul {
+    width: 590;
+    height: 600px;
+    /* border: 1px dotted red; */
 }
 
 .input section.number ul li button {
