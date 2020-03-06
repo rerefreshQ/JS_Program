@@ -7,6 +7,10 @@
     font-display: block;
 }
 
+body {
+    height: 1600px;
+}
+
 #loading {
     position: absolute;
     width: 100%;
@@ -150,10 +154,16 @@ button[disabled] {
     border: 0;
 }
 
+
+/* .input section.number ul #liC, */
+
 .input section.number ul #liNextAsk {
     /* display: none; */
     float: right;
 }
+
+
+/* .input section.number ul #idC, */
 
 .input section.number ul #nextAsk {
     width: 300px;

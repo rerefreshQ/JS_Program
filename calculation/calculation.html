@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/calculction.css">
     <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <!-- <script src="js/calculction.js" defer></script> -->
     <title>00:18给桉桉的计算题+-法</title>
 
@@ -16,7 +17,7 @@
 </head>
 
 <body>
-    <div id="loading">loading...</div>
+    <!-- <div id="loading">loading...</div> -->
 
     <!-- 各种设定 start -->
     <header class="w">
@@ -39,7 +40,7 @@
 
 
             <li class="liTextAndButton">
-                <input id="textEnd" type="text" name="textEnd" id="" value="20">
+                <input id="textEnd" type="text" name="textEnd" id="" value="30">
                 <section class="sectionTextAndButton">
                     <!-- <div class="btnAdd" id="textEndAdd"></div>
                     <div class="btnCut" id="textEndCut"></div> -->
@@ -124,10 +125,10 @@
                 <li><button id="id8">8</button></li>
                 <li><button id="id9">9</button></li>
                 <li><button id="id0">0</button></li>
-                <li><button id="idC">C</button></li>
+                <li id="liC"><button id="idC">C</button></li>
                 <li><button id="idOK">OK</button></li>
                 <li id="liNextAsk"><button id="nextAsk" disabled>下一题</button></li>
-                <!-- <li><button id="nextAsk"></button></li> -->
+
 
 
 
@@ -162,10 +163,15 @@
         var listNumber;
 
         $(function() {
-            nextAsk();
+            openUrlCookies(); // 网页打开时建立或得到原 cookies{cal:Add | Cut,    dataStart:0,     dataEnd:30}
+            nextAsk(); // 随机题目
         });
 
+
+
+
         $('.number>ul>li').click(function() {
+            // 用户输入的键盘事件
             var userClick = $(this).text();
             switch (userClick) {
                 case 'C':
@@ -207,7 +213,57 @@
         });
 
 
+        function upDateCookies() {
+            // ? 至 ? 之间 , 加||减 的 cookies update
+            $.cookie("cal", $('input:radio[name=radioCal]:checked').val(), {
+                expires: 10
+            });
+
+            $.cookie("dataStart", $('#textStart').val(), {
+                expires: 10
+            });
+
+            $.cookie("dataEnd", $('#textEnd').val(), {
+                expires: 10
+            });
+            console.log($.cookie());
+        }
+
+
+        function openUrlCookies() {
+            // 网页打开时建立或得到原 cookies{cal:Add | Cut,    dataStart:0,     dataEnd:30}
+
+            // $.removeCookie('cal');
+
+            if (typeof($.cookie("cal")) == "undefined") {
+                console.log('没有值，新建：');
+                console.log($.cookie());
+                $.cookie("cal", 'Cut', {
+                    expires: 10
+                });
+
+                $.cookie("dataStart", 0, {
+                    expires: 10
+                });
+
+                $.cookie("dataEnd", 30, {
+                    expires: 10
+                });
+            } else {
+                console.log('已有值：');
+                console.log($.cookie());
+            }
+
+            $('input:radio[name=radioCal]:checked').val($.cookie("cal"));
+            $('#textStart').val($.cookie("dataStart"));
+            $('#textEnd').val($.cookie("dataEnd"));
+
+
+            console.log($.cookie());
+        }
+
         function nextAsk() {
+            // 建立新题目事件
             listNumber = getRandList(); // 得到题目和答案 [A,+B,=result]
 
             var cal = $('input:radio[name=radioCal]:checked').val(); // 做加法还是减法的 redio
@@ -235,6 +291,7 @@
             // $('#idC').attr("disabled", false) // 打开C
             $('#nextAsk').attr("disabled", true); // 关闭下一题
             $('#loading').css("display", "none");
+            upDateCookies();
         }
 
         function getRandList() {
@@ -323,6 +380,7 @@
 
 
         function UpDownMore(textId, number) {
+            // ? 与 ? 旁边的上下范围 连续多次 调节
             time1 = setInterval(() => {
                 if (parseInt(textId.val()) == 0 && number == -1) {
 
@@ -334,6 +392,7 @@
 
 
         function UpDown(textId, number) {
+            // ? 与 ? 旁边的上下范围 单次 调节
             if (parseInt(textId.val()) == 0 && number < 0) {
 
             } else {

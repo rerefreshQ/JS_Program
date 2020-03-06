@@ -5,20 +5,86 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
-    <script>
-        function c() {
-            console.log("wwwwwwwwwww");
-            alert("test");
-
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <style>
+        body {
+            height: 2000px;
         }
-    </script>
+    </style>
+
 
 </head>
 
 <body>
+    <div>xx</div>
+    <div>xx</div>
+    <div>xx</div>
+    <div>xx</div>
+    <div>xx</div>
+    <div>xx</div>
+    <div>xx</div>
+    <button id="c">tes3t</button>
+    <button id="ww">w</button>
 
-    <button onclick="c()">test</button>
+
+
+    <script>
+        $(function() {
+            $.cookie("example", "foo", {
+                expires: 10
+            });
+            alert($.cookie("example"));
+        })
+
+
+        // setTimeout('$(document).scrollTop($(document).scrollTop() + 30)', 50);   //这是 ok 的
+
+
+
+
+
+        $('#c').click(function() {
+            console.log(
+                $(window).scrollTop()
+            );
+
+            // $(document).scrollTop(30);
+            // $(document).scrollTop($(document).scrollTop() + 30);
+            console.log(
+                $(document).scrollTop()
+            );
+            // $(document).offset({
+            //     "top": 1000,
+            //     "left": 0
+            // });
+
+            // alert("test");
+            // $('#content').scrollTop($('#content')[0].scrollHeight);
+            // $(window).animate({
+            //     // scrollTop: top + 30
+            //     scrollTop: top + 1
+
+            // });
+        });
+
+        $(function() {
+            $('#ww').css("background-color", "chocolate");
+            // $('#content').scrollTop($('#content')[0].scrollHeight);
+            // $("p").offset({top:200,left:200});
+
+            // var top = $('body').scrollTop();
+            $('body').animate({
+                scrollTop: top - 35
+            });
+        })
+
+        // function c() {
+        //     console.log("wwwwwwwwwww");
+        //     alert("test");
+        //     // $('#content').scrollTop($('#content')[0].scrollHeight);
+        // }
+    </script>
 
 
 </body>

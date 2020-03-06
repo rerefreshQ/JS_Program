@@ -1,0 +1,9 @@
+javascript/jquery判断是否为undefined或是null!
+if (typeof(exp) == "undefined")
+{
+    alert("undefined");
+}
+
+注意判断是否是undefined的时候一定要在两边加上引号,否则不成功(个人测试结果!)
+
+typeof 返回的是字符串，有六种可能："number"、"string"、"boolean"、"object"、"function"、"undefined"
