@@ -76,8 +76,17 @@ header ul li span {
     font-size: 50px;
 }
 
-header ul li .AddCut {
-    zoom: 230%;
+header ul li .AddCut div label {
+    font-size: 30px;
+}
+
+header ul li .AddCut div input {
+    width: 35px;
+    height: 35px;
+    vertical-align: text-bottom;
+    /* zoom: 230%; */
+    /* width:calc() */
+    /* width: calc(230px); */
 }
 
 

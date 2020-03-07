@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="S.ico" />
     <link rel="stylesheet" href="css/base.css">
@@ -159,12 +160,20 @@
 
 
     <script>
-        var tempResult;
-        var listNumber;
+        var tempResult; // 用于限制 user 输入的答案不能超过3位数，即不能超过 999
+        var listNumber; // 得到题目和答案 [A,+B,=result]
 
         $(function() {
-            openUrlCookies(); // 网页打开时建立或得到原 cookies{cal:Add | Cut,    dataStart:0,     dataEnd:30}
-            nextAsk(); // 随机题目
+            if (window.location.href.indexOf('?time=') >= 0) {
+                // console.log("这是 +了 time= url")
+
+                openUrlCookies(); // 网页打开时建立或得到原 cookies{cal:Add | Cut,    dataStart:0,     dataEnd:30,   userID:new Date().getTime()}
+                nextAsk(); // 随机题目
+            } else {
+                // console.log('原url')
+                var newURL = window.location.href + "?time=" + new Date().getTime();
+                window.location = newURL;
+            };
         });
 
 
@@ -226,18 +235,17 @@
             $.cookie("dataEnd", $('#textEnd').val(), {
                 expires: 10
             });
-            console.log($.cookie());
+            // console.log($.cookie());
         }
 
 
         function openUrlCookies() {
-            // 网页打开时建立或得到原 cookies{cal:Add | Cut,    dataStart:0,     dataEnd:30}
+            // 网页打开时建立或得到原 cookies{cal:Add | Cut,    dataStart:0,     dataEnd:30,   userID:"?time=" + new Date().getTime()}
 
             // $.removeCookie('cal');
 
+
             if (typeof($.cookie("cal")) == "undefined") {
-                console.log('没有值，新建：');
-                console.log($.cookie());
                 $.cookie("cal", 'Cut', {
                     expires: 10
                 });
@@ -249,17 +257,33 @@
                 $.cookie("dataEnd", 30, {
                     expires: 10
                 });
+
+                $.cookie("userID", new Date().getTime(), {
+                    expires: 10
+                });
+                // console.log('没有值，新建：');
+                // console.log($.cookie());
             } else {
-                console.log('已有值：');
-                console.log($.cookie());
+                // console.log('已有值：');
+                // console.log($.cookie());
             }
+
 
             $('input:radio[name=radioCal]:checked').val($.cookie("cal"));
             $('#textStart').val($.cookie("dataStart"));
             $('#textEnd').val($.cookie("dataEnd"));
 
 
-            console.log($.cookie());
+
+            if ($('input:radio[name=radioCal]:checked').val() == '') {
+                $('input:radio[name=radioCal]:checked').val('Cut');
+                $('#textStart').val('0');
+                $('#textEnd').val('30');
+
+            }
+
+
+
         }
 
         function nextAsk() {
