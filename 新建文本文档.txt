@@ -7,3 +7,57 @@ if (typeof(exp) == "undefined")
 注意判断是否是undefined的时候一定要在两边加上引号,否则不成功(个人测试结果!)
 
 typeof 返回的是字符串，有六种可能："number"、"string"、"boolean"、"object"、"function"、"undefined"
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+jquery获取当前页面的URL信息
+
+以前在做网站的时候，经常会遇到当前页的分类高亮显示，以便让用户了解当前处于哪个页面。之前一直是在每个不同页面写方法。工程量大，也不便于修改。一直在想有什么简便的方法实现。后来在网上查到可以用获取当前URL的详细信息来判断。所以收集了JQUERY获取URL的函数的资料。
+
+设置或获取对象指定的文件名或路径。
+window.location.pathname
+例：http://localhost:8086/topic/index?topicId=361
+alert(window.location.pathname); 则输出：/topic/index
+
+设置或获取整个 URL 为字符串。
+window.location.href
+例：http://localhost:8086/topic/index?topicId=361
+alert(window.location.href); 则输出：http://localhost:8086/topic/index?topicId=361
+
+设置或获取与 URL 关联的端口号码。
+window.location.port
+例：http://localhost:8086/topic/index?topicId=361
+alert(window.location.port); 则输出：8086
+
+设置或获取 URL 的协议部分。
+window.location.protocol
+例：http://localhost:8086/topic/index?topicId=361
+alert(window.location.protocol); 则输出：http:
+
+设置或获取 href 属性中在井号“#”后面的分段。
+window.location.hash
+
+设置或获取 location 或 URL 的 hostname 和 port 号码。
+window.location.host
+例：http://localhost:8086/topic/index?topicId=361
+alert(window.location.host); 则输出：http:localhost:8086
+
+设置或获取 href 属性中跟在问号后面的部分。
+window.location.search
+例：http://localhost:8086/topic/index?topicId=361
+alert(window.location.search); 则输出：?topicId=361
+
+window.location
+属性                  描述
+hash                设置或获取 href 属性中在井号“#”后面的分段。
+host                 设置或获取 location 或 URL 的 hostname 和 port 号码。
+hostname      设置或获取 location 或 URL 的主机名称部分。
+href                  设置或获取整个 URL 为字符串。
+pathname      设置或获取对象指定的文件名或路径。
+port                  设置或获取与 URL 关联的端口号码。
+protocol          设置或获取 URL 的协议部分。
+search            设置或获取 href 属性中跟在问号后面的部分。
+
+
+====================================================================================================================
